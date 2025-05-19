@@ -9,7 +9,7 @@ DOWNLOAD_SCRIPT=$(readlink -m "$SELF_DIR/download_new_videos.sh")
 
 # Fetch video IDs
 video_ids=$(yt-dlp --flat-playlist --playlist-reverse -J "$PLAYLIST_URL" | jq -r '.entries[0:10].[].id')
-video_hash=$(echo -n $video_ids | sha256sum | awk '{print $1}')
+video_hash=$(echo -n $video_ids | tr -d '[:cntrl:]' | tr -s '\n' ' ' | sha256sum | awk '{print $1}')
 
 # Log the update time
 echo "Video IDs and hash fetched at $(date)"
