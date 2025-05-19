@@ -8,7 +8,7 @@ VID_HASH_FILE=$(readlink -m "$ROOT_DIR/video_ids_hash.txt")
 DOWNLOAD_SCRIPT=$(readlink -m "$SELF_DIR/download_new_videos.sh")
 
 # Fetch video IDs
-video_ids=$(yt-dlp --flat-playlist --playlist-reverse -J "$PLAYLIST_URL" | jq -r '.entries[0:10].[].id')
+video_ids=$(yt-dlp --flat-playlist -I -1 -J "$PLAYLIST_URL" | jq -r '.entries.[].id')
 video_hash=$(echo -n $video_ids | tr -d '[:cntrl:]' | tr -s '\n' ' ' | sha256sum | awk '{print $1}')
 
 # Log the update time
@@ -32,8 +32,8 @@ fi
 
 # Download as needed
 if [ "$needs_update" = true ]; then
+  echo $video_hash > "$VID_HASH_FILE"
   echo "Downloading new videos at $(date)"
   bash "$DOWNLOAD_SCRIPT"
-  echo $video_hash > "$VID_HASH_FILE"
-  echo "Download completed and hash updated at $(date)"
+  echo "Download completed at $(date)"
 fi
