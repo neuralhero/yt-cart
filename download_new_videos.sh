@@ -3,7 +3,7 @@
 readonly SELF_DIR=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source "$SELF_DIR/.env"
 
-DOWNLOAD_DIR="$ROOT_DIR/downloads/"
+DOWNLOAD_DIR=$(readlink -m "$ROOT_DIR/downloads/")
 mkdir -p "$DOWNLOAD_DIR"
 
 # Modify these based on own use case

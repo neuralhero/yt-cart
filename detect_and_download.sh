@@ -4,9 +4,9 @@ readonly SELF_DIR=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source "$SELF_DIR/.env"
 
 # Paths
-VIDEO_IDS_FILE="$ROOT_DIR/video_ids.txt"
-PREV_VIDEO_IDS_FILE="$ROOT_DIR/prev_video_ids.txt"
-DOWNLOAD_SCRIPT="$SELF_DIR/download_new_videos.sh"
+VIDEO_IDS_FILE=$(readlink -m "$ROOT_DIR/video_ids.txt")
+PREV_VIDEO_IDS_FILE=$(readlink -m "$ROOT_DIR/prev_video_ids.txt")
+DOWNLOAD_SCRIPT=$(readlink -m "$SELF_DIR/download_new_videos.sh")
 
 # Ensure prev_video_ids.txt exists
 if [ ! -f "$PREV_VIDEO_IDS_FILE" ]; then
