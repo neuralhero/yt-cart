@@ -51,7 +51,7 @@ Obviously, YouTube's *Watch Later* could be a much easier solution too, but when
     nano download_new_videos.sh
     ```
 
-5. Make sure all three scripts have execution rights
+5. Make sure all three scripts are executable
 
     ```bash
     sudo chmod +x download_video_ids.sh
@@ -65,11 +65,29 @@ Obviously, YouTube's *Watch Later* could be a much easier solution too, but when
     ./download_new_videos.sh
     ```
 
-7. Add these two to your cronjobs if you want them to scan and download every minute
+7. Add these two lines to your cron jobs if you want them to scan and download every minute
 
     ```bash
     * * * * * /path/to/yt-cart-main/download_video_ids.sh
     * * * * * /path/to/yt-cart-main/detect_and_download.sh
     ```
 
-You can start adding videos to the playlist to see if they appear after 5-10 minutes in `ROOT_DIR`.
+You can start adding videos to the playlist to see if they appear after 5-10 minutes in `ROOT_DIR/downloads`.
+
+## EXTRA: Archiving old videos
+
+Another issue I have run into with this carting system is that sometimes my folder is full of videos I no longer want to watch. To solve this, I created another script `archive_old_videos.sh` to move videos older than a week to a separate archive folder, so I can decide which to keep or delete.
+
+If you already set up the `.env`, you can just also add `archive_old_videos.sh` to the cron jobs, with the retention date and scanning intervals you like.
+
+1. Make the script is executable
+
+    ```bash
+    sudo chmod +x archive_old_videos.sh
+    ```
+
+2. Add it to your cron jobs. This example runs the script every day at 4AM.
+
+    ```bash
+    0 4 * * * /path/to/yt-cart-main/archive_old_videos.sh
+    ```

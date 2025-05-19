@@ -3,6 +3,9 @@
 readonly SELF_DIR=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source "$SELF_DIR/.env"
 
+DOWNLOAD_DIR="$ROOT_DIR/downloads/"
+mkdir -p "$DOWNLOAD_DIR"
+
 # Modify these based on own use case
 # keep an archive of downloaded videos at archive.txt to avoid repetition
 # download to set ROOT_DIR
@@ -12,7 +15,7 @@ source "$SELF_DIR/.env"
 
 yt-dlp \
   --download-archive "$ROOT_DIR/archive.txt" \
-  -P "$ROOT_DIR/downloads/" \
+  -P "$DOWNLOAD_DIR" \
   -o "subtitle:%(uploader)s/%(title)s/subs/%(title)s [%(id)s].%(ext)s" \
   -o "%(uploader)s/%(title)s/%(title)s [%(id)s].%(ext)s" \
   --embed-chapters \
