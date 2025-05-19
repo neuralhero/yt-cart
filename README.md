@@ -28,7 +28,7 @@ Obviously, YouTube's *Watch Later* could be a much easier solution too, but when
 * Basics with `bash` and `cron`
 * An [unlisted YouTube playlist](https://support.google.com/youtube/answer/3127309?hl=en&co=GENIE.Platform%3DAndroid) which can only be accessed through URL and not search or browse
 
-## Instructions
+## Getting Started
 
 1. Clone this repo
 2. Change the parameters in `.env`
@@ -57,3 +57,5 @@ Obviously, YouTube's *Watch Later* could be a much easier solution too, but when
     * * * * * /path/to/yt-cart/download_video_ids.sh
     * * * * * /path/to/yt-cart/detect_and_download.sh
     ```
+
+You can start adding videos to the playlist to see if they appear after 5-10 minutes in `ROOT_DIR`.
