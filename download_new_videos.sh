@@ -4,6 +4,12 @@ readonly SELF_DIR=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source "$SELF_DIR/.env"
 
 # Modify these based on own use case
+# keep an archive of downloaded videos at archive.txt to avoid repetition
+# download to set ROOT_DIR
+# download English subtitles and thumbnails
+# Embed chapters in the videos, including those from SponsorBlock
+# sleep 10-75 seconds between actions to avoid IP blocking
+
 yt-dlp \
   --download-archive "$ROOT_DIR/archive.txt" \
   -P "$ROOT_DIR" \

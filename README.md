@@ -31,31 +31,43 @@ Obviously, YouTube's *Watch Later* could be a much easier solution too, but when
 ## Getting Started
 
 1. Clone this repo
-2. Change the parameters in `.env`
+2. Switch to the repo folder
 
     ```bash
-    # Root directory for downloads and archiving
-    ROOT_DIR="/CHANGEME/"
-
-    # Playlist URL
-    PLAYLIST_URL="CHANGEME"
+    cd yt-cart-main
     ```
 
-3. [OPTIONAL] You may also modify `download_new_videos.sh` based on yt-dlp usage. The script is currently set to grab the video of highest quality with subtitles and thumbnails
-
-4. Make sure all three scripts have execution rights
+3. Change the parameters in `.env`
 
     ```bash
-    sudo chmod +x /path/to/yt-cart/download_video_ids.sh
-    sudo chmod +x /path/to/yt-cart/detect_and_download.sh
-    sudo chmod +x /path/to/yt-cart/download_new_videos.sh
+    nano .env
     ```
 
-5. Add these two to your cronjobs if you want them to scan and download every minute
+4. [OPTIONAL] You may also modify `download_new_videos.sh` based on yt-dlp usage. The script is currently set to grab the video of highest quality with subtitles and thumbnails
 
     ```bash
-    * * * * * /path/to/yt-cart/download_video_ids.sh
-    * * * * * /path/to/yt-cart/detect_and_download.sh
+    nano download_new_videos.sh
+    ```
+
+5. Make sure all three scripts have execution rights
+
+    ```bash
+    sudo chmod +x download_video_ids.sh
+    sudo chmod +x detect_and_download.sh
+    sudo chmod +x download_new_videos.sh
+    ```
+
+6. Test run the download script. If this doesn't work, check `.env` (like are the strings wrapped in double quotes?)
+
+    ```bash
+    ./download_new_videos.sh
+    ```
+
+7. Add these two to your cronjobs if you want them to scan and download every minute
+
+    ```bash
+    * * * * * /path/to/yt-cart-main/download_video_ids.sh
+    * * * * * /path/to/yt-cart-main/detect_and_download.sh
     ```
 
 You can start adding videos to the playlist to see if they appear after 5-10 minutes in `ROOT_DIR`.
