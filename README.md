@@ -74,7 +74,7 @@ Obviously, YouTube's *Watch Later* could be a much easier solution too, but when
 
 You can start adding videos to the playlist to see if they appear after 5-10 minutes in `ROOT_DIR/downloads`.
 
-## EXTRA: Archiving old videos
+## BONUS: Archiving old videos
 
 Another issue I have run into with this carting system is that sometimes my folder is full of videos I no longer want to watch. To solve this, I created another script `archive_old_videos.sh` to move videos older than a week to a separate archive folder, so I can decide which to keep or delete.
 
