@@ -19,13 +19,11 @@ needs_update=false
 # Ensure video_ids_hash.txt exists
 if [ ! -f "$VID_HASH_FILE" ]; then
   needs_update=true
-  echo $video_hash > "$VID_HASH_FILE"
   echo "Created initial video_ids_hash.txt"
 else
   prev_video_hash=$(<"$VID_HASH_FILE")
   if [[ "$video_hash" != "$prev_video_hash" ]]; then
     needs_update=true
-    echo $video_hash > "$VID_HASH_FILE"
     echo "Change detected and hash updated at $(date)"
   else
     echo "No change detected at $(date)"
@@ -36,4 +34,6 @@ fi
 if [ "$needs_update" = true ]; then
   echo "Downloading new videos at $(date)"
   bash "$DOWNLOAD_SCRIPT"
+  echo $video_hash > "$VID_HASH_FILE"
+  echo "Download completed and hash updated at $(date)"
 fi
