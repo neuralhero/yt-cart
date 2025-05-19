@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source ./.env
+readonly SELF_DIR=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source "$SELF_DIR/.env"
 
 # Paths
 VIDEO_IDS_FILE="$ROOT_DIR/video_ids.txt"

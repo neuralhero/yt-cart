@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source ./.env
+readonly SELF_DIR=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source "$SELF_DIR/.env"
 
 # Modify these based on own use case
 yt-dlp \
