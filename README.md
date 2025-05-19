@@ -51,10 +51,9 @@ Obviously, YouTube's *Watch Later* could be a much easier solution too, but when
     nano download_new_videos.sh
     ```
 
-5. Make sure all three scripts are executable
+5. Make sure all these scripts are executable
 
     ```bash
-    sudo chmod +x download_video_ids.sh
     sudo chmod +x detect_and_download.sh
     sudo chmod +x download_new_videos.sh
     ```
@@ -65,10 +64,9 @@ Obviously, YouTube's *Watch Later* could be a much easier solution too, but when
     ./download_new_videos.sh
     ```
 
-7. Add these two lines to your cron jobs if you want them to scan and download every minute
+7. Add this to your cron jobs if you want them to scan and download every minute
 
     ```bash
-    * * * * * /path/to/yt-cart-main/download_video_ids.sh
     * * * * * /path/to/yt-cart-main/detect_and_download.sh
     ```
 
