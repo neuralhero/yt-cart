@@ -45,14 +45,14 @@ Obviously, YouTube's *Watch Later* could be a much easier solution too, but when
 4. Make sure all three scripts have execution rights
 
     ```bash
-    sudo chmod +x /path/to/download_video_ids.sh
-    sudo chmod +x /path/to/detect_and_download.sh
-    sudo chmod +x /path/to/download_new_videos.sh
+    sudo chmod +x /path/to/yt-cart/download_video_ids.sh
+    sudo chmod +x /path/to/yt-cart/detect_and_download.sh
+    sudo chmod +x /path/to/yt-cart/download_new_videos.sh
     ```
 
 5. Add these two to your cronjobs if you want them to scan and download every minute
 
     ```bash
-    * * * * * /home/chimmy/yt-cart/download_video_ids.sh
-    * * * * * /home/chimmy/yt-cart/detect_and_download.sh
+    * * * * * /path/to/yt-cart/download_video_ids.sh
+    * * * * * /path/to/yt-cart/detect_and_download.sh
     ```
