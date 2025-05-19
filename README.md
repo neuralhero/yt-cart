@@ -1,5 +1,7 @@
 # yt-cart - Slow Watching YouTube
 
+![yt-cart banner](assets/banner.png "yt-cart banner")
+
 A carting system for YouTube to enable *browse now watch later* behavior, consisting of a set of Bash scripts to detect changes and download new videos from a YouTube playlist.
 
 ## Solving Impulse Watching

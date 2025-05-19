@@ -12,7 +12,7 @@ source "$SELF_DIR/.env"
 
 yt-dlp \
   --download-archive "$ROOT_DIR/archive.txt" \
-  -P "$ROOT_DIR" \
+  -P "$ROOT_DIR/downloads/" \
   -o "subtitle:%(uploader)s/%(title)s/subs/%(title)s [%(id)s].%(ext)s" \
   -o "%(uploader)s/%(title)s/%(title)s [%(id)s].%(ext)s" \
   --embed-chapters \
