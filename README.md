@@ -26,6 +26,7 @@ Obviously, YouTube's *Watch Later* could be a much easier solution too, but when
 
 * [yt-dlp](https://github.com/yt-dlp/yt-dlp)
 * Basics with `bash` and `cron`
+* An [unlisted YouTube playlist](https://support.google.com/youtube/answer/3127309?hl=en&co=GENIE.Platform%3DAndroid) which can only be accessed through URL and not search or browse
 
 ## Instructions
 
