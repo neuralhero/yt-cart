@@ -30,7 +30,7 @@ Obviously, YouTube's *Watch Later* could be a much easier solution too, but when
 
 ## Getting Started
 
-1. Clone this repo
+1. Clone this repo or [download as ZIP](https://codeload.github.com/neuralhero/yt-cart/zip/refs/heads/main)
 2. Switch to the repo folder
 
     ```bash
