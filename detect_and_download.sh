@@ -12,35 +12,35 @@ IN_PROGRESS_FILE=$(readlink -m "$ROOT_DIR/INPROGRESS")
 video_ids=$(yt-dlp --flat-playlist -I -1 -J "$PLAYLIST_URL" | jq -r '.entries.[].id')
 
 # Log the update time
-echo "Lastest video ID fetched at $(date)"
+echo "[yt-cart] Lastest video ID fetched at $(date)"
 
 needs_update=false
 
 # Check if another script is already in progress
 if [ -e "$IN_PROGRESS_FILE" ]; then
-    echo "Download in progress"
+    echo "[yt-cart] Download in progress. Quitting at $(date)"
     exit 1
 fi 
 
 # Check if there are new videos to download
 if [ ! -f "$ARCHIVE_FILE" ]; then
   needs_update=true
-  echo "archive.txt doesn't exsit, will run the script"
+  echo "[yt-cart] archive.txt doesn't exsit, will run the script"
 else
   archive_ids=$(<"$ARCHIVE_FILE")
   if [[ $archive_ids != *"youtube $video_ids"* ]]; then
     needs_update=true
-    echo "Playlist changes detected at $(date)"
+    echo "[yt-cart] Playlist changes detected at $(date)"
   else
-    echo "No change detected at $(date)"
+    echo "[yt-cart] No change detected at $(date)"
   fi
 fi
 
 # Download as needed
 if [ "$needs_update" = true ]; then
   touch "$IN_PROGRESS_FILE"
-  echo "Downloading new videos at $(date)"
+  echo "[yt-cart] Downloading new videos at $(date)"
   bash "$DOWNLOAD_SCRIPT"
   rm "$IN_PROGRESS_FILE"
-  echo "Download completed at $(date)"
+  echo "[yt-cart] Download completed at $(date)"
 fi
