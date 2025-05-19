@@ -4,6 +4,7 @@ readonly SELF_DIR=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source "$SELF_DIR/.env"
 
 DOWNLOAD_DIR=$(readlink -m "$ROOT_DIR/downloads/")
+ARCHIVE_FILE=$(readlink -m "$ROOT_DIR/archive.txt")
 mkdir -p "$DOWNLOAD_DIR"
 
 # Modify these based on own use case
@@ -14,7 +15,7 @@ mkdir -p "$DOWNLOAD_DIR"
 # sleep 10-75 seconds between actions to avoid IP blocking
 
 yt-dlp \
-  --download-archive "$ROOT_DIR/archive.txt" \
+  --download-archive "$ARCHIVE_FILE" \
   -P "$DOWNLOAD_DIR" \
   -o "subtitle:%(uploader)s/%(title)s/subs/%(title)s [%(id)s].%(ext)s" \
   -o "%(uploader)s/%(title)s/%(title)s [%(id)s].%(ext)s" \
