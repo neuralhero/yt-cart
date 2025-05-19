@@ -12,7 +12,7 @@ Seeing similarity in [*impulse shopping*](https://www.bankrate.com/banking/what-
 2. **Carting**: During browsing, if I see anything interesting and non-urgent (which applies to 99% of my watched videos), I will add them to a semi-private playlist, which will be scanned and downloaded by this script.
 3. **Watching**: After the videos are downloaded, I will revisit them at a later time of the day or week, if they still interest me.
 
-The turns and friction have so far allowed me to be more deliberate about which videos to watch, and gain better focus since I don't need to watch whatever interests me immediately. 
+The turns and friction have so far allowed me to be more deliberate about which videos to watch, and gain better focus since I don't need to watch whatever interests me immediately.
 
 Obviously, YouTube's *Watch Later* could be a much easier solution too, but when everything can be done so effortlessly on one platform, I found myself on a very slippery slope to reclaim my attention, hence this script and approach.
 
