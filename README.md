@@ -1,4 +1,4 @@
-# yt-cart - Slow Watching on YouTube
+# yt-cart - Slow Watching YouTube
 
 A carting system for YouTube to enable *browse now watch later* behavior, consisting of a set of Bash scripts to detect changes and download new videos from a YouTube playlist.
 
