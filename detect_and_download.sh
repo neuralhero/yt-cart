@@ -6,7 +6,7 @@ source "$SELF_DIR/.env"
 # Paths
 VIDEO_IDS_FILE="$ROOT_DIR/video_ids.txt"
 PREV_VIDEO_IDS_FILE="$ROOT_DIR/prev_video_ids.txt"
-DOWNLOAD_SCRIPT="./download_new_videos.sh"
+DOWNLOAD_SCRIPT="$SELF_DIR/download_new_videos.sh"
 
 # Ensure prev_video_ids.txt exists
 if [ ! -f "$PREV_VIDEO_IDS_FILE" ]; then
