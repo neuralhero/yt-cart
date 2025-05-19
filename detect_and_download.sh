@@ -4,27 +4,33 @@ readonly SELF_DIR=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source "$SELF_DIR/.env"
 
 # Paths
-VID_HASH_FILE=$(readlink -m "$ROOT_DIR/video_ids_hash.txt")
+ARCHIVE_FILE=$(readlink -m "$ROOT_DIR/archive.txt")
 DOWNLOAD_SCRIPT=$(readlink -m "$SELF_DIR/download_new_videos.sh")
+IN_PROGRESS_FILE=$(readlink -m "$ROOT_DIR/INPROGRESS")
 
 # Fetch video IDs
 video_ids=$(yt-dlp --flat-playlist -I -1 -J "$PLAYLIST_URL" | jq -r '.entries.[].id')
-video_hash=$(echo -n $video_ids | tr -d '[:cntrl:]' | tr -s '\n' ' ' | sha256sum | awk '{print $1}')
 
 # Log the update time
-echo "Video IDs and hash fetched at $(date)"
+echo "Lastest video ID fetched at $(date)"
 
 needs_update=false
 
-# Ensure video_ids_hash.txt exists
-if [ ! -f "$VID_HASH_FILE" ]; then
+# Check if another script is already in progress
+if [ -e "$IN_PROGRESS_FILE" ]; then
+    echo "Download in progress"
+    exit 1
+fi 
+
+# Check if there are new videos to download
+if [ ! -f "$ARCHIVE_FILE" ]; then
   needs_update=true
-  echo "Created initial video_ids_hash.txt"
+  echo "archive.txt doesn't exsit, will run the script"
 else
-  prev_video_hash=$(<"$VID_HASH_FILE")
-  if [[ "$video_hash" != "$prev_video_hash" ]]; then
+  archive_ids=$(<"$ARCHIVE_FILE")
+  if [[ $archive_ids != *"youtube $video_ids"* ]]; then
     needs_update=true
-    echo "Change detected and hash updated at $(date)"
+    echo "Playlist changes detected at $(date)"
   else
     echo "No change detected at $(date)"
   fi
@@ -32,8 +38,9 @@ fi
 
 # Download as needed
 if [ "$needs_update" = true ]; then
-  echo $video_hash > "$VID_HASH_FILE"
+  touch "$IN_PROGRESS_FILE"
   echo "Downloading new videos at $(date)"
   bash "$DOWNLOAD_SCRIPT"
+  rm "$IN_PROGRESS_FILE"
   echo "Download completed at $(date)"
 fi
